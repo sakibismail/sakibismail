@@ -1,0 +1,49 @@
+import java.io.*;
+class merge1
+{
+public static void main(String args[]) throws Exception
+{
+PrintWriter f1 = new PrintWriter("file1.txt");
+f1.println(111);
+f1.println(222);
+f1.println(333);
+f1.println(444);
+f1.flush();
+f1.close();
+PrintWriter f2 = new PrintWriter("file2.txt");
+f2.println("AAA");
+f2.println("BBB");
+f2.println("CCC");
+f2.println("DDD");
+f2.flush();
+f2.close();
+PrintWriter f3 = new PrintWriter("file3.txt");
+BufferedReader b1 = new BufferedReader(new FileReader("file1.txt"));
+BufferedReader b2 = new BufferedReader(new FileReader("file2.txt"));
+String str1 = b1.readLine();
+String str2 = b2.readLine();
+while(str1!=null)
+{
+f3.println(str1);
+str1 = b1.readLine();
+}
+while(str2!=null)
+{
+f3.println(str2);
+
+str2 = b2.readLine();
+}
+b1.close();
+b2.close();
+f3.flush();
+f3.close();
+BufferedReader b3 = new BufferedReader(new FileReader("file3.txt"));
+String str3 = b3.readLine();
+while(str3!=null)
+{
+System.out.println(str3);
+str3 = b3.readLine();
+}
+b3.close();
+}
+}
